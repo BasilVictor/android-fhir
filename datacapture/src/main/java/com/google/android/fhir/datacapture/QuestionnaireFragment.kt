@@ -30,9 +30,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.fhir.datacapture.views.QuestionnaireItemViewHolderFactory
 import kotlinx.coroutines.flow.collect
 import org.hl7.fhir.r4.model.Questionnaire
+import org.hl7.fhir.r4.model.QuestionnaireResponse
 
 open class QuestionnaireFragment : Fragment() {
   private val viewModel: QuestionnaireViewModel by viewModels()
+  private lateinit var adapter: QuestionnaireItemAdapter
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -61,7 +63,7 @@ open class QuestionnaireFragment : Fragment() {
     val paginationNextButton = view.findViewById<View>(R.id.pagination_next_button)
     paginationNextButton.setOnClickListener { viewModel.goToNextPage() }
 
-    val adapter = QuestionnaireItemAdapter(getCustomQuestionnaireItemViewHolderFactoryMatchers())
+    adapter = QuestionnaireItemAdapter(getCustomQuestionnaireItemViewHolderFactoryMatchers(), false)
 
     recyclerView.adapter = adapter
     recyclerView.layoutManager = LinearLayoutManager(view.context)
@@ -95,7 +97,11 @@ open class QuestionnaireFragment : Fragment() {
     emptyList<QuestionnaireItemViewHolderFactoryMatcher>()
 
   // Returns the current questionnaire response
-  fun getQuestionnaireResponse() = viewModel.getQuestionnaireResponse()
+fun getQuestionnaireResponse(): QuestionnaireResponse {
+    adapter.questionnaireSave = true
+    adapter.notifyDataSetChanged()
+    return viewModel.getQuestionnaireResponse()
+  }
 
   companion object {
     /**

@@ -48,6 +48,7 @@ internal abstract class QuestionnaireItemEditTextViewHolderDelegate(
   private lateinit var textInputLayout: TextInputLayout
   private lateinit var textInputEditText: TextInputEditText
   override lateinit var questionnaireItemViewItem: QuestionnaireItemViewItem
+  var showErrorStatus: Boolean = false
 
   override fun init(itemView: View) {
     prefixTextView = itemView.findViewById(R.id.prefix_text_view)
@@ -92,13 +93,19 @@ internal abstract class QuestionnaireItemEditTextViewHolderDelegate(
 
   override fun displayValidationResult(validationResult: ValidationResult) {
     textInputLayout.error =
-      if (validationResult.getSingleStringValidationMessage() == "") null
+      if (validationResult.getSingleStringValidationMessage() == "" ||
+        (textInputEditText.text.toString().isEmpty() && !showErrorStatus)
+      ) null
       else validationResult.getSingleStringValidationMessage()
   }
 
   override fun setReadOnly(isReadOnly: Boolean) {
     textInputLayout.isEnabled = !isReadOnly
     textInputEditText.isEnabled = !isReadOnly
+  }
+
+  override fun setShowAllError(saveButtonClicked: Boolean) {
+    showErrorStatus = saveButtonClicked
   }
 
   /** Returns the answer that should be recorded given the text input by the user. */

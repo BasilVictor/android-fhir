@@ -58,8 +58,9 @@ open class QuestionnaireItemViewHolder(
     delegate.init(itemView)
   }
 
-  open fun bind(questionnaireItemViewItem: QuestionnaireItemViewItem) {
+  open fun bind(questionnaireItemViewItem: QuestionnaireItemViewItem, saveButtonClicked: Boolean) {
     delegate.questionnaireItemViewItem = questionnaireItemViewItem
+    delegate.setShowAllError(saveButtonClicked)
     delegate.bind(questionnaireItemViewItem)
     delegate.setReadOnly(questionnaireItemViewItem.questionnaireItem.readOnly)
     delegate.displayValidationResult(delegate.getValidationResult(itemView.context))
@@ -112,4 +113,6 @@ interface QuestionnaireItemViewHolderDelegate {
       context
     )
   }
+
+  fun setShowAllError(saveButtonClicked: Boolean)
 }

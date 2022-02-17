@@ -124,5 +124,7 @@ internal object QuestionnaireItemBooleanTypePickerViewHolderFactory :
           view.isEnabled = !isReadOnly
         }
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }

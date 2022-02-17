@@ -120,6 +120,8 @@ object QuestionnaireItemBarCodeReaderViewHolderFactory :
       }
 
       override fun setReadOnly(isReadOnly: Boolean) {}
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 
   const val WIDGET_EXTENSION = "https://fhir.labs.smartregister.org/barcode-type-widget-extension"

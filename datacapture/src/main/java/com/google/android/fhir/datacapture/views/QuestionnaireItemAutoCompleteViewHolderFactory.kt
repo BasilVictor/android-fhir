@@ -289,5 +289,7 @@ internal object QuestionnaireItemAutoCompleteViewHolderFactory :
           )
         }
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }

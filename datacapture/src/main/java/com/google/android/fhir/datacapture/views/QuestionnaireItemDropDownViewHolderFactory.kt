@@ -85,5 +85,7 @@ internal object QuestionnaireItemDropDownViewHolderFactory :
       override fun setReadOnly(isReadOnly: Boolean) {
         textInputLayout.isEnabled = !isReadOnly
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }
