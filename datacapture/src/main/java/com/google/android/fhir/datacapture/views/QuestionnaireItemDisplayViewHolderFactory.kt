@@ -60,5 +60,7 @@ internal object QuestionnaireItemDisplayViewHolderFactory :
       override fun setReadOnly(isReadOnly: Boolean) {
         // Display type questions have no user input
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }

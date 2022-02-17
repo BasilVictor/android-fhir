@@ -62,5 +62,7 @@ internal object QuestionnaireItemGroupViewHolderFactory :
       override fun setReadOnly(isReadOnly: Boolean) {
         // No user input
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }

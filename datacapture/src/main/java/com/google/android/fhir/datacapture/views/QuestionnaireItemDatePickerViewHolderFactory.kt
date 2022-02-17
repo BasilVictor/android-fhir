@@ -120,6 +120,8 @@ internal object QuestionnaireItemDatePickerViewHolderFactory :
         textInputEditText.isEnabled = !isReadOnly
         textInputLayout.isEnabled = !isReadOnly
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 
   @SuppressLint("NewApi") // java.time APIs can be used due to desugaring

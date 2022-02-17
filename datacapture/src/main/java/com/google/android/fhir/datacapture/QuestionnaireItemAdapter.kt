@@ -43,7 +43,8 @@ import org.hl7.fhir.r4.model.Questionnaire.QuestionnaireItemType
 internal class QuestionnaireItemAdapter(
   private val questionnaireItemViewHolderMatchers:
     List<QuestionnaireFragment.QuestionnaireItemViewHolderFactoryMatcher> =
-    emptyList()
+    emptyList(),
+  var questionnaireSave: Boolean = false
 ) : ListAdapter<QuestionnaireItemViewItem, QuestionnaireItemViewHolder>(DiffCallback) {
   /**
    * @param viewType the integer value of the [QuestionnaireItemViewHolderType] used to render the
@@ -96,7 +97,7 @@ internal class QuestionnaireItemAdapter(
   }
 
   override fun onBindViewHolder(holder: QuestionnaireItemViewHolder, position: Int) {
-    holder.bind(getItem(position))
+    holder.bind(getItem(position), questionnaireSave)
   }
 
   /**

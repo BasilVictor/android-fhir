@@ -106,5 +106,7 @@ internal object QuestionnaireItemRadioGroupViewHolderFactory :
           view.isEnabled = !isReadOnly
         }
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }

@@ -77,5 +77,7 @@ internal object QuestionnaireItemSliderViewHolderFactory :
       override fun setReadOnly(isReadOnly: Boolean) {
         slider.isEnabled = !isReadOnly
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }

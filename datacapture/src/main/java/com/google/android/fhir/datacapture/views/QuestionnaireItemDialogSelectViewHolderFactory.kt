@@ -115,6 +115,8 @@ internal object QuestionnaireItemDialogSelectViewHolderFactory :
       override fun setReadOnly(isReadOnly: Boolean) {
         holder.summaryHolder.isEnabled = !isReadOnly
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 
   private class DialogSelectViewHolder(itemView: View) {

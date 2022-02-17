@@ -101,5 +101,7 @@ internal object QuestionnaireItemCheckBoxGroupViewHolderFactory :
         }
         checkboxGroup.addView(singleCheckBox)
       }
+
+      override fun setShowAllError(saveButtonClicked: Boolean) {}
     }
 }
